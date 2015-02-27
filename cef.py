@@ -152,7 +152,7 @@ def _syslog(msg, config):
     logopt = _str2logopt(config.get('syslog_options'))
     facility = _str2facility(config.get('syslog_facility'))
     ident = config.get('syslog_ident', sys.argv[0])
-    priority = _str2priority(config.get('syslog.priority'))
+    priority = _str2priority(config.get('syslog_priority'))
     with _log_lock:
         global _LOG_OPENED
         if _LOG_OPENED != (ident, logopt, facility):
