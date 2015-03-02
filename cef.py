@@ -287,7 +287,7 @@ def _format_msg(fields, kw, maxlen=_MAXLEN):
 
 
 def log_cef(name, severity, environ, config, username='none',
-            signature=None, **kw):
+            signature=None, maxlen=_MAXLEN, **kw):
     """Creates a CEF record, and emit it in syslog or another file.
 
     Args:
@@ -297,12 +297,13 @@ def log_cef(name, severity, environ, config, username='none',
         - config: configuration dict
         - signature: CEF signature code - defaults to name value
         - username: user name - defaults to 'none'
+        - maxlen: maximum length of the message (1024 by default)
         - extra keywords: extra keys used in the CEF extension
     """
     config = _filter_params('cef', config)
     fields = _get_fields(name, severity, environ, config, username=username,
                         signature=signature, **kw)
-    msg = _format_msg(fields, kw)
+    msg = _format_msg(fields, kw, maxlen)
 
     if config['file'] == 'syslog':
         if not SYSLOG:
