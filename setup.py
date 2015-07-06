@@ -33,7 +33,7 @@
 # the terms of any one of the MPL, the GPL or the LGPL.
 #
 # ***** END LICENSE BLOCK *****
-from distutils.core import setup
+from setuptools import setup
 
 
 f = open('README.txt')
